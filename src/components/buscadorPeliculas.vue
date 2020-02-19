@@ -15,10 +15,13 @@
             <b-button @click="hazQuery" variant="primary">Buscar</b-button>
             <b-button @click="ordenarAnyo" variant="primary">Ordenar</b-button>
           </b-form>
-          <fichaPelicula :datos=query></fichaPelicula>
+           <b-row v-show="verDetalle">
+              <detallePelicula  :idPelicula=detailedResults></detallePelicula>
+          </b-row>
+
           <b-row>
             <b-col cols="4"  v-for="actual in results.Search" :key="actual.imdbID">
-              <fichaPelicula  :movie=actual></fichaPelicula>
+              <fichaPelicula @verDetalle="peticionDetalle" :movie=actual></fichaPelicula>
             </b-col>
           </b-row>
         </b-col>
@@ -30,6 +33,7 @@
 
 <script>
 
+import detallePelicula from '@/components/detallePelicula.vue'
 import fichaPelicula from '@/components/fichaPelicula.vue'
 import axios from 'axios'
 
@@ -37,10 +41,17 @@ export default {
   data () {
     return {
       query: '',
-      results: []
+      results: [],
+      verDetalle: '',
+      detailedResults: ''
     }
   },
   methods: {
+    peticionDetalle: function (data) {
+      axios.get(`http://www.omdbapi.com/?apikey=19f8a30e&i=${data}`).then(response => { this.detailedResults = response.data; console.log(response) })
+      console.log('me lleg ala peticion' + data)
+      this.verDetalle = 1
+    },
     hazQuery: function () {
       axios.get(`http://www.omdbapi.com/?apikey=19f8a30e&s=${this.query}`).then(response => { this.results = response.data; console.log(response) })
     },
@@ -50,7 +61,8 @@ export default {
   },
   name: 'buscadorPeliculas',
   components: {
-    fichaPelicula
+    fichaPelicula,
+    detallePelicula
   },
   props: {
     datos: String

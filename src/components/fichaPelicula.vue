@@ -9,7 +9,7 @@
               <h3 class="card-text">{{movie.Title}}</h3>
               <h4 class="card-text">{{movie.Year}}</h4>
               <b-button :href="'https://www.imdb.com/title/'+movie.imdbID+'/'" target="_blank" variant="primary">Ir a imdb</b-button>
-              <b-button href="#"  variant="primary">Ver más</b-button>
+              <b-button @click="verInfo" href="#"  variant="primary">Ver más</b-button>
         </b-card-text>
       </b-card>
 </template>
@@ -22,7 +22,13 @@ export default {
     }
   },
   props: {
-    movie: String
+    movie: Object
+  },
+  methods: {
+    verInfo: function () {
+      this.$emit('verDetalle', this.movie.imdbID)
+      alert(this.movie.imdbID)
+    }
   }
 }
 </script>
