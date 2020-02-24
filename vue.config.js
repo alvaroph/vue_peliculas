@@ -1,1 +1,4 @@
-module.exports = {}
+module.exports = {
+  lintOnSave: false,
+  runtimeCompiler: true
+}

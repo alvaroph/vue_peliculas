@@ -3,15 +3,16 @@
         <b-card
         :title="datosPelicula.Title"
         :img-src="datosPelicula.Poster"
-        img-left 
+        img-left
         class="mb-3"
         tag="article"
         >
         <b-card-text>
           <h2> {{datosPelicula.Year}}</h2>
           {{datosPelicula.Plot}}
+          <br>
+           <b-badge v-for="genero in datosPelicula.Genre.split(',')" variant="primary">{{genero}}</b-badge>
         </b-card-text>
-        <b-button href="#" variant="primary">Go somewhere</b-button>
         </b-card>
         {{datosPelicula}}
     </div>
