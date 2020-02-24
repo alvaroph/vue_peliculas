@@ -16,7 +16,7 @@
             <b-button @click="ordenarAnyo" variant="primary">Ordenar</b-button>
           </b-form>
            <b-row v-show="verDetalle">
-              <detallePelicula  :idPelicula=detailedResults></detallePelicula>
+              <detallePelicula  :datosPelicula=detailedResults></detallePelicula>
           </b-row>
 
           <b-row>

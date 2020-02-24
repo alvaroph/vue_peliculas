@@ -1,7 +1,19 @@
 <template>
     <div>
-        Aqui ira el detalle de la pelicula
-        {{idPelicula}}
+        <b-card
+        :title="datosPelicula.Title"
+        :img-src="datosPelicula.Poster"
+        img-left 
+        class="mb-3"
+        tag="article"
+        >
+        <b-card-text>
+          <h2> {{datosPelicula.Year}}</h2>
+          {{datosPelicula.Plot}}
+        </b-card-text>
+        <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+        {{datosPelicula}}
     </div>
 </template>
 <script>
@@ -13,7 +25,7 @@ export default {
     }
   },
   props: {
-    idPelicula: Number
+    datosPelicula: Object
   }
 }
 </script>
