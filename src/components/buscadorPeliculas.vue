@@ -16,6 +16,7 @@
             <b-button @click="ordenarAnyo" variant="primary">Ordenar</b-button>
           </b-form>
            <b-row v-show="verDetalle">
+              <b-button @click="verDetalle=false" variant="primary">Cerrar</b-button>
               <detallePelicula  :datosPelicula=detailedResults></detallePelicula>
           </b-row>
 
@@ -42,7 +43,7 @@ export default {
     return {
       query: '',
       results: [],
-      verDetalle: '',
+      verDetalle: 'false',
       detailedResults: ''
     }
   },
@@ -50,7 +51,7 @@ export default {
     peticionDetalle: function (data) {
       axios.get(`http://www.omdbapi.com/?apikey=19f8a30e&i=${data}`).then(response => { this.detailedResults = response.data; console.log(response) })
       console.log('me lleg ala peticion' + data)
-      this.verDetalle = 1
+      this.verDetalle = true
     },
     hazQuery: function () {
       axios.get(`http://www.omdbapi.com/?apikey=19f8a30e&s=${this.query}`).then(response => { this.results = response.data; console.log(response) })
