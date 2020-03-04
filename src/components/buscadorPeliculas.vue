@@ -65,7 +65,6 @@ export default {
     detallePelicula
   },
   props: {
-    datos: String
   }
 }
 </script>

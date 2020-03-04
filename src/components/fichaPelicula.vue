@@ -27,7 +27,6 @@ export default {
   methods: {
     verInfo: function () {
       this.$emit('verDetalle', this.movie.imdbID)
-      alert(this.movie.imdbID)
     }
   }
 }

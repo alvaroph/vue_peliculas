@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <buscadorPeliculas datos="Esto es algo pasado a mi componente"></buscadorPeliculas>
+    <buscadorPeliculas ></buscadorPeliculas>
   </div>
 </template>
 

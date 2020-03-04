@@ -11,10 +11,9 @@
           <h2> {{datosPelicula.Year}}</h2>
           {{datosPelicula.Plot}}
           <br>
-           <b-badge v-for="genero in datosPelicula.Genre.split(',')" variant="primary">{{genero}}</b-badge>
+           <b-badge v-for="genero in datosPelicula.Genre.split(',')" :key="genero.Title" variant="primary">{{genero}}</b-badge>
         </b-card-text>
         </b-card>
-        {{datosPelicula}}
     </div>
 </template>
 <script>
